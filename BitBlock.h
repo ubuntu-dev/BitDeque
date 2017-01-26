@@ -58,22 +58,22 @@ public:
              const int8_t size);
     virtual ~BitBlock();
 
-    // These just overwrite the whole block,
-    // with exception of the base address,
-    // starting at offset zero (LSB)
+    // These just overwrite the whole block, with
+    // exception of the base address, starting at
+    // offset zero (LSB)
     void SetBlock(const BitBlock & block);
     void SetBlock(const uint64_t data,
                   const int8_t size);
     void Clear() { SetBlock(0, 0); }
 
-    // Get bits at bit offset. This will
-    // be used to support random access
-    // read operations in larger scope.
+    // Get bits at bit offset. This will be used to
+    // support random access  read operations in
+    // larger scope (BitDeque).
     BitBlock GetBits(const int8_t offset) const;
 
-    // Set bits at bit offset.  This should
-    // NOT alter size, but only overwrite
-    // bits currently in use
+    // Replace (set) bits at bit offset.  This will
+    // not alter the size of the block, but only
+    // overwrite  bits currently allocated.
     BitBlock SetBits(const BitBlock & block,
                      const int8_t offset);
     BitBlock SetBits(const uint64_t data,
@@ -91,11 +91,11 @@ public:
     bool IsFull() const;
 
 //--52---------------------------------------------|
-    // LSB right-most bits are 'Back'.  This
-    // pushes the caller's bits into the
-    // right end of the block, shifting
-    // existing bits to the left.  Bits that
-    // overflow off the left end are returned
+    // LSB right-most bits are 'Back'.  This pushes
+    // the caller's bits into the right end of the
+    // block, shifting existing bits to the left.
+    // Bits that  overflow off the left end are
+    // returned
     BitBlock PushLow(const BitBlock & block);
     BitBlock PushLow(const uint64_t data,
                      const int8_t size);

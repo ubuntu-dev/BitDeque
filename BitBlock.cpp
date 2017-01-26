@@ -266,7 +266,7 @@ BitBlock BitBlock::PopLow(const int8_t size)
     SetBlock(GetBits(size));
 
     // TODO: Update base address chain
-    // only when size  changes
+    // only when size changes
 
     return lowBits;
 }
@@ -335,7 +335,7 @@ BitBlock BitBlock::PopHigh(const int8_t size)
     SetBlock(_data, remaining);
 
     // TODO: Update base address chain
-    // only when size  changes
+    // only when size changes
 
     return highBits;
 }

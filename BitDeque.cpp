@@ -45,4 +45,10 @@ BitDeque::~BitDeque()
 
 }
 
+void BitDeque::Clear()
+{
+    _blocks.clear();
+    _size = 0;
+}
+
 }

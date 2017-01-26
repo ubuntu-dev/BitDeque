@@ -28,12 +28,14 @@
 // OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //-------------------------------------------------|
 
-// Example uses for this class
-// cryptography, compression
-// communication (dynamic ICD) BitField
-// arbitrary precision math 
-// integer and floating point DynInt DynFloat
-// exponent and mantissa grow as needed
+//--52---------------------------------------------|
+// Example uses for this class include:
+// Cryptography, Compression, Communication (With
+// possible runtime ICD definitions), mapping
+// BitFields within data structures, Arbitrary
+// Precision math libraries for integer and floating
+// point (eg DynInt and DynFloat) where exponent
+// and mantissa size grow as needed by operations.
 
 #pragma once
 
@@ -53,8 +55,78 @@ public:
     BitDeque();
     virtual ~BitDeque();
 
-    // TODO: Add accessor methods and operators
-    
+    // Empties all bits from the bit deque
+    void Clear();
+
+    // Returns the size in bits of the deque
+    size_t GetSize() const { return _size; }
+
+//--52---------------------------------------------|
+    // Get a chunk of bits from arbirary bit offset
+    BitBlock GetBits(const size_t addr);
+    //BitBlock GetBits(const size_t addr,
+    //                 const uint64_t size);
+
+    // Replace (set) bits at bit offset.  This will
+    // not alter the size of the block, but only
+    // overwrite  bits currently allocated.
+    BitBlock SetBits(const BitBlock & block,
+                     const size_t addr);
+    BitBlock SetBits(const uint64_t data,
+                     const int8_t size,
+                     const size_t addr);
+
+    // LSB right-most bits are 'Back'.  This pushes
+    // the caller's bits into the right end of the
+    // block, shifting existing bits to the left.
+    // Bits that  overflow off the left end are
+    // returned
+    BitBlock PushLow(const BitBlock & block);
+    BitBlock PushLow(const uint64_t data,
+                     const int8_t size);
+
+    // This pops LSBs off the right, shifting
+    // MSBs 'down' and decreasing _size
+    BitBlock PopLow(const int8_t size);
+
+    // MSB left-most bits are 'Front'.  This
+    // pushes the caller's bits into the left
+    // end of the block, shifting existing
+    // bits to the right (if necessary since
+    // buffer is LSB-justified).  Bits that
+    // 'overflow' off the right end are
+    // returned.
+    BitBlock PushHigh(const BitBlock & block);
+    BitBlock PushHigh(const uint64_t data,
+                      const int8_t size);
+
+    // This pops MSBs off the left.  No
+    // shifting to accommodate should ever
+    // be necessary here.
+    BitBlock PopHigh(const int8_t size);
+
+//--52---------------------------------------------|
+    // Remove (delete) a chunk of bits at an
+    // arbitrary bit offset.  The bits deleted are
+    // returned in a block if small enough,
+    // otherwise if a larger number are to be
+    // removed then return the amount removed
+    BitBlock Remove(const int8_t size,
+                    const size_t addr);
+    size_t Remove(const size_t size,
+                  const size_t addr);
+
+
+    void Insert(const BitBlock & block,
+                const size_t addr);
+
+
+
+
+
+
+ 
+
 private:
 
     // Containers for storing bits
