@@ -13,5 +13,9 @@ This is a general utility class for use in other larger projects.  Essentially i
 Add built-in class serialization / deserialization to/from JSON (Not XML!)
 
 ## Q&A
-- Why is your code wrapped at 52 characters???
+- Why is your code wrapped at 52 characters?
     - Because I developed this on my tiny mobile phone (yes, really).  Normally at my desktop I wrap lines at ~100 characters.
+- Why do you hate XML?
+    - I actually like some aspects of XML (portability, flexibility, semi-human readable)
+    - However it has some drawbacks: information density is low by comparison, and it's not _that_ human-readable
+    
