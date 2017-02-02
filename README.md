@@ -14,4 +14,4 @@ Add built-in class serialization / deserialization to/from JSON (Not XML!)
 
 ## Q&A
 - Why is your code wrapped at 52 characters???
---Because I developed this on my tiny mobile phone (yes, really).  Normally at my desktop I wrap lines at ~100 characters.
+-- Because I developed this on my tiny mobile phone (yes, really).  Normally at my desktop I wrap lines at ~100 characters.
