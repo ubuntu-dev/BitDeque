@@ -82,7 +82,7 @@ public:
 
     // Get raw data and base address
     uint64_t GetData() const;
-    size_t GetAddr() const;
+    uint64_t GetAddr() const;
 
     // Capacity related getters
     int8_t GetSize() const;
@@ -134,7 +134,7 @@ public:
     // support auomatically maintaining each
     // block's base addr so they can be used
     // for binary search in random access.
-    void SetAddr(const size_t addr);
+    void SetAddr(const uint64_t addr);
     //void SetNext(BitBlock* next);
 
     // Generate a human readable report
@@ -171,7 +171,7 @@ private:
     // keeping it up to date will allow
     // things like binary search to be
     // implemented at a higher level.
-    size_t _addr;      
+    uint64_t _addr;      
 
     // Pointer to the next highest block.
     // This will be NULL for the last block

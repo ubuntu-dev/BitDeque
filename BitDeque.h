@@ -122,7 +122,9 @@ public:
 
 
 
+protected:
 
+    void ReBase();
 
 
  

@@ -179,7 +179,7 @@ int8_t BitBlock::GetSize() const
 }
 
 //--52---------------------------------------------|
-size_t BitBlock::GetAddr() const
+uint64_t BitBlock::GetAddr() const
 { 
     return _addr;
 }
@@ -341,7 +341,7 @@ BitBlock BitBlock::PopHigh(const int8_t size)
 }
 
 //--52---------------------------------------------|
-void BitBlock::SetAddr(size_t addr)
+void BitBlock::SetAddr(uint64_t addr)
 {
     // Go ahead and set my own address.
     _addr = addr;
