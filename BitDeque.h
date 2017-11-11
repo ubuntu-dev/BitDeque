@@ -59,22 +59,22 @@ public:
     void Clear();
 
     // Returns the size in bits of the deque
-    size_t GetSize() const { return _size; }
+    uint64_t GetSize() const { return _size; }
 
 //--52---------------------------------------------|
     // Get a chunk of bits from arbirary bit offset
-    BitBlock GetBits(const size_t addr);
-    //BitBlock GetBits(const size_t addr,
+    BitBlock GetBits(const uint64_t addr);
+    //BitBlock GetBits(const uint64_t addr,
     //                 const uint64_t size);
 
     // Replace (set) bits at bit offset.  This will
     // not alter the size of the block, but only
     // overwrite  bits currently allocated.
     BitBlock SetBits(const BitBlock & block,
-                     const size_t addr);
+                     const uint64_t addr);
     BitBlock SetBits(const uint64_t data,
                      const int8_t size,
-                     const size_t addr);
+                     const uint64_t addr);
 
     // LSB right-most bits are 'Back'.  This pushes
     // the caller's bits into the right end of the
@@ -112,19 +112,19 @@ public:
     // otherwise if a larger number are to be
     // removed then return the amount removed
     BitBlock Remove(const int8_t size,
-                    const size_t addr);
-    size_t Remove(const size_t size,
-                  const size_t addr);
+                    const uint64_t addr);
+    uint64_t Remove(const uint64_t size,
+                    const uint64_t addr);
 
 
     void Insert(const BitBlock & block,
-                const size_t addr);
+                const uint64_t addr);
 
 
 
 protected:
 
-    void ReBase();
+    //void ReBase();
 
 
  
@@ -135,7 +135,7 @@ private:
     std::deque<BitBlock> _blocks;
 
     // Total number of bits
-    size_t _size;
+    uint64_t _size;
 };
 
 }

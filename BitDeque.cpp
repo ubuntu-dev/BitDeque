@@ -34,21 +34,90 @@
 namespace rmf
 {
     
+//--52---------------------------------------------|
 BitDeque::BitDeque()
 : _size(0)
 {
 
 }
 
+//--52---------------------------------------------|
 BitDeque::~BitDeque()
 {
 
 }
 
+//--52---------------------------------------------|
 void BitDeque::Clear()
 {
     _blocks.clear();
     _size = 0;
 }
+
+
+    // Get a chunk of bits from arbirary bit offset
+    BitBlock BitDeque::GetBits(const uint64_t addr);
+    //BitBlock GetBits(const uint64_t addr,
+    //                 const uint64_t size);
+
+    // Replace (set) bits at bit offset.  This will
+    // not alter the size of the block, but only
+    // overwrite  bits currently allocated.
+    BitBlock BitDeque::SetBits(const BitBlock & block,
+                     const uint64_t addr);
+    BitBlock BitDeque::SetBits(const uint64_t data,
+                     const int8_t size,
+                     const uint64_t addr);
+
+    // LSB right-most bits are 'Back'.  This pushes
+    // the caller's bits into the right end of the
+    // block, shifting existing bits to the left.
+    // Bits that  overflow off the left end are
+    // returned
+    BitBlock BitDeque::PushLow(const BitBlock & block);
+    BitBlock BitDeque::PushLow(const uint64_t data,
+                     const int8_t size);
+
+    // This pops LSBs off the right, shifting
+    // MSBs 'down' and decreasing _size
+    BitBlock BitDeque::PopLow(const int8_t size);
+
+    // MSB left-most bits are 'Front'.  This
+    // pushes the caller's bits into the left
+    // end of the block, shifting existing
+    // bits to the right (if necessary since
+    // buffer is LSB-justified).  Bits that
+    // 'overflow' off the right end are
+    // returned.
+    BitBlock BitDeque::PushHigh(const BitBlock & block);
+    BitBlock BitDeque::PushHigh(const uint64_t data,
+                      const int8_t size);
+
+    // This pops MSBs off the left.  No
+    // shifting to accommodate should ever
+    // be necessary here.
+    BitBlock BitDeque::PopHigh(const int8_t size);
+
+//--52---------------------------------------------|
+    // Remove (delete) a chunk of bits at an
+    // arbitrary bit offset.  The bits deleted are
+    // returned in a block if small enough,
+    // otherwise if a larger number are to be
+    // removed then return the amount removed
+    BitBlock BitDeque::Remove(const int8_t size,
+                    const uint64_t addr);
+    uint64_t BitDeque::Remove(const uint64_t size,
+                    const uint64_t addr);
+
+
+    void BitDeque::Insert(const BitBlock & block,
+                const uint64_t addr);
+
+
+
+
+
+
+
 
 }
