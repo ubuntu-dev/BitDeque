@@ -440,6 +440,8 @@ ostream & operator<<(ostream & os,
 
     // lastly show the size
     os << "size: " << (int16_t) block.GetSize();
+
+    return os;
 }
 
 }

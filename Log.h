@@ -124,12 +124,10 @@ void log(const char *file, const char *func,
     char * fileName = basename((char *) file);
     char * dontCare = NULL;
     fileName = strtok_r(fileName, ".", &dontCare);
-    std::cout << fileName <<
-        ": " << func << "(): ";
+    std::cout << fileName << ": " << func << "(): ";
     printList(std::cout, data.list);
     std::cout << "\n";
 }
 
 //------------------------------------------|
-#define LOG(x) (log(__FILE__, __FUNCTION__, \
-    LogData<None>() << x))
+#define LOG(x) (log(__FILE__, __FUNCTION__, LogData<None>() << x))
