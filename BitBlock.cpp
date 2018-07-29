@@ -402,6 +402,7 @@ ostream & operator<<(ostream & os,
 {
     // Show all 4-bit hex nibbles as ASCII
     // chars atop their respective LSB.
+    os << endl;
     string line("hex: ");
     static const uint8_t NIBBLE_BITS = 4;
     int8_t shift = BitBlock::MAX_NUM_BITS -

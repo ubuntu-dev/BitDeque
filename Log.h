@@ -123,7 +123,8 @@ void log(const char *file, const char *func,
 {
     char * fileName = basename((char *) file);
     char * dontCare = NULL;
-    fileName = strtok_r(fileName, ".", &dontCare);
+    //char * derpy = strdup(fileName);
+    //derpy = strtok(fileName, ".");
     std::cout << fileName << ": " << func << "(): ";
     printList(std::cout, data.list);
     std::cout << "\n";
