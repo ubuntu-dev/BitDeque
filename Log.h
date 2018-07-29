@@ -121,7 +121,7 @@ template <typename List>
 void log(const char *file, const char *func,
          const LogData<List> &data)
 {
-    char * fileName = basename(file);
+    char * fileName = basename((char *) file);
     char * dontCare = NULL;
     fileName = strtok_r(fileName, ".", &dontCare);
     std::cout << fileName <<
