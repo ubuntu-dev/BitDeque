@@ -58,6 +58,7 @@ void BitDeque::Clear()
 // Get a chunk of bits from arbirary bit offset
 BitBlock BitDeque::GetBits(const uint64_t addr)
 {
+    // placeholder
     return BitBlock();
 }
 
@@ -69,6 +70,7 @@ BitBlock BitDeque::GetBits(const uint64_t addr)
 BitBlock BitDeque::SetBits(const BitBlock & block,
                            const uint64_t addr)
 {
+    // placeholder
     return BitBlock();
 }
 
@@ -77,6 +79,7 @@ BitBlock BitDeque::SetBits(const uint64_t data,
                            const int8_t size,
                            const uint64_t addr)
 {
+    // placeholder
     return BitBlock();
 }
 
