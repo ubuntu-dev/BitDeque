@@ -1,6 +1,9 @@
 # BitDeque
 A general purpose deque of bits
 
+# License
+MIT
+
 ## Purpose
 This is a general utility class for use in other larger projects.  Essentially it exchanges memory usage (high) for fine-grained run-time control over bitfields in arbitrary data structures.  This could be used for cryptography, compression, serial communication, assembers/disassembers, etc.  Bit fields can be software-defined and parameterized, allowing the user to write flexible yet fast code that is compiled once, rather than what is typically done where data structures are written and defined to match a particular hardware case.
 
