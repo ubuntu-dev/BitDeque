@@ -27,27 +27,27 @@
 namespace rmf
 {
     
-//--52---------------------------------------------|
+//------------------------------------------------------------------------|
 BitDeque::BitDeque()
 : _size(0)
 {
 
 }
 
-//--52---------------------------------------------|
+//------------------------------------------------------------------------|
 BitDeque::~BitDeque()
 {
 
 }
 
-//--52---------------------------------------------|
+//------------------------------------------------------------------------|
 void BitDeque::Clear()
 {
     _blocks.clear();
     _size = 0;
 }
 
-//--52---------------------------------------------|
+//------------------------------------------------------------------------|
 // Get a chunk of bits from arbirary bit offset
 BitBlock BitDeque::GetBits(const uint64_t addr)
 {
@@ -55,82 +55,74 @@ BitBlock BitDeque::GetBits(const uint64_t addr)
     return BitBlock();
 }
 
-//--52---------------------------------------------|
-//BitBlock BitDeque::GetBits(const uint64_t addr,
-//                           const uint64_t size)
+//------------------------------------------------------------------------|
+//BitBlock BitDeque::GetBits(const uint64_t addr, const uint64_t size)
 
-//--52---------------------------------------------|
-BitBlock BitDeque::SetBits(const BitBlock & block,
-                           const uint64_t addr)
+//------------------------------------------------------------------------|
+BitBlock BitDeque::SetBits(const BitBlock & block, const uint64_t addr)
 {
     // placeholder
     return BitBlock();
 }
 
-//--52---------------------------------------------|
-BitBlock BitDeque::SetBits(const uint64_t data,
-                           const int8_t size,
-                           const uint64_t addr)
+//------------------------------------------------------------------------|
+BitBlock BitDeque::SetBits(const uint64_t data, const int8_t size,
+		const uint64_t addr)
 {
     // placeholder
     return BitBlock();
 }
 
-//--52---------------------------------------------|
+//------------------------------------------------------------------------|
 BitBlock BitDeque::PushLow(const BitBlock & block)
 {
     return BitBlock();
 }
 
-//--52---------------------------------------------|
-BitBlock BitDeque::PushLow(const uint64_t data,
-                           const int8_t size)
+//------------------------------------------------------------------------|
+BitBlock BitDeque::PushLow(const uint64_t data, const int8_t size)
 {
     return BitBlock();
 }
 
-//--52---------------------------------------------|
+//------------------------------------------------------------------------|
 BitBlock BitDeque::PopLow(const int8_t size)
 {
     return BitBlock();
 }
 
-//--52---------------------------------------------|
+//------------------------------------------------------------------------|
 BitBlock BitDeque::PushHigh(const BitBlock & block)
 {
     return BitBlock();
 }
 
-//--52---------------------------------------------|
-BitBlock BitDeque::PushHigh(const uint64_t data,
-                            const int8_t size)
+//------------------------------------------------------------------------|
+BitBlock BitDeque::PushHigh(const uint64_t data, const int8_t size)
 {
     return BitBlock();
 }
 
-//--52---------------------------------------------|
+//------------------------------------------------------------------------|
 BitBlock BitDeque::PopHigh(const int8_t size)
 {
     return BitBlock();
 }
 
-//--52---------------------------------------------|
-BitBlock BitDeque::Remove(const int8_t size,
-                          const uint64_t addr)
+//------------------------------------------------------------------------|
+BitBlock BitDeque::Remove(const int8_t size, const uint64_t addr)
 {
     return BitBlock();
 }
 
-//--52---------------------------------------------|
-uint64_t BitDeque::Remove(const uint64_t size,
-                          const uint64_t addr)
+//------------------------------------------------------------------------|
+uint64_t BitDeque::Remove(const uint64_t size, const uint64_t addr)
 {
     return 0;
 }
 
-//--52---------------------------------------------|
-void BitDeque::Insert(const BitBlock & block,
-                      const uint64_t addr)
+//------------------------------------------------------------------------|
+void BitDeque::Insert(const BitBlock & block, const uint64_t addr)
 {
     return; // BitBlock();
 }

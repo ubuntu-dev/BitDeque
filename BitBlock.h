@@ -78,7 +78,6 @@ public:
     bool IsEmpty() const;
     bool IsFull() const;
 
-//------------------------------------------------------------------------|
     // LSB right-most bits are 'Back'.  This pushes
     // the caller's bits into the right end of the
     // block, shifting existing bits to the left.

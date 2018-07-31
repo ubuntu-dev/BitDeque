@@ -21,11 +21,11 @@
 // SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //------------------------------------------------------------------------|
 
-//-------------------------------------------------|
+//------------------------------------------------------------------------|
 // http://stackoverflow.com/questions/19415845/
-// a-better-log-macro-using-template-metaprogramming
+//     a-better-log-macro-using-template-metaprogramming
 // http://stackoverflow.com/questions/7398310/
-// how-to-get-only-file-name-in-preprocessor
+//     how-to-get-only-file-name-in-preprocessor
 
 #include <stdint.h>
 #include <iostream>
@@ -34,66 +34,60 @@
 
 struct None { };
 
-//-------------------------------------------------|
-template <typename First, typename Second>
-struct Pair
+//------------------------------------------------------------------------|
+template <typename First, typename Second> struct Pair
 {
     First first;
     Second second;
 };
 
-//------------------------------------------|
-template <typename List>
-struct LogData
+//------------------------------------------------------------------------|
+template <typename List> struct LogData
 {
     List list;
 };
 
-//------------------------------------------|
+//------------------------------------------------------------------------|
 template <typename Begin, typename Value>
-LogData< Pair<Begin, const Value &> >
-    operator<<(LogData<Begin> begin,
-               const Value &value)
+		LogData< Pair<Begin, const Value &> >
+    	operator<<(LogData<Begin> begin, const Value &value)
 {
     return {{begin.list, value}};
 }
 
-//------------------------------------------|
+//------------------------------------------------------------------------|
 template <typename Begin, size_t n>
 LogData< Pair<Begin, const char *> >
-    operator<<(LogData<Begin> begin,
-               const char (&value)[n])
+operator<<(LogData<Begin> begin, const char (&value)[n])
 {
     return {{begin.list, value}};
 }
 
-//------------------------------------------|
+//------------------------------------------------------------------------|
 inline void printList(std::ostream &os, None)
 {
 }
 
-//------------------------------------------|
+//------------------------------------------------------------------------|
 template <typename Begin, typename Last>
-void printList(std::ostream &os,
-               const Pair<Begin, Last> &data)
+void printList(std::ostream &os, const Pair<Begin, Last> &data)
 {
     printList(os, data.first);
     os << data.second;
 }
 
-//------------------------------------------|
+//------------------------------------------------------------------------|
 template <typename List>
-void log(const char *file, const char *func,
-         const LogData<List> &data)
+void log(const char *file, const char *func, const LogData<List> &data)
 {
-    char * fileName = basename((char *) file);
+    char * fileName = strdup(basename((char *) file));
     char * dontCare = NULL;
-    //char * derpy = strdup(fileName);
-    //derpy = strtok(fileName, ".");
+    fileName = strtok_r(fileName, ".", &dontCare);
     std::cout << fileName << ": " << func << "(): ";
+    free(fileName);
     printList(std::cout, data.list);
     std::cout << "\n";
 }
 
-//------------------------------------------|
+//------------------------------------------------------------------------|
 #define LOG(x) (log(__FILE__, __FUNCTION__, LogData<None>() << x))
